@@ -1,0 +1,55 @@
+官方网站:
+    http://subversion.apache.org
+
+文档:
+    http://subversion.apache.org/docs/
+    http://svnbook.red-bean.com/
+    http://svnbook.red-bean.com/en/1.7/index.html
+    http://svnbook.red-bean.com/nightly/zh/index.html
+
+
+客户端/服务端软件下载地址:
+    http://subversion.apache.org       --->    binary packages --->
+    http://subversion.apache.org/packages.html
+
+
+
+
+
+
+
+
+服务端搭建:
+    mac:
+        参考:
+            https://jingyan.baidu.com/article/6525d4b19dbeb5ac7c2e9450.html
+            https://www.cnblogs.com/yintingting/p/7287332.html
+
+        1.创建版本管理仓库
+            svnadmin create 仓库名称
+        2.设置权限
+            仓库名称/conf/svnserver.conf
+            -->
+            # anon-access = read  
+            # auth-access = write  
+            # password-db = passwd  
+            # authz-db = authz 
+            去掉这几个前面的#
+            anon-access 表示匿名访问权限（如果把anon-access=read修改为anon-access=none，
+            这样就禁止了匿名访问，只有输入账号密码才可以访问）
+        3.创建用户
+            仓库名称/conf/passwd
+            --> 添加用户名和密码
+            在[users]后面加ytt=123，表示创建了ytt帐户，密码是123.
+        4.配置用户组和权限
+            仓库名称/conf/authz
+            -->     
+
+
+
+    windows:
+        参考:
+            https://jingyan.baidu.com/article/17bd8e526d344185ab2bb821.html
+
+
+
