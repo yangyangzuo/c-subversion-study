@@ -1,0 +1,86 @@
+查看文件状态:
+    帮助:
+        svn help status
+
+
+    The first seven columns in the output are each one character wide:
+    First column: Says if item was added, deleted, or otherwise changed
+        ' ' no modifications
+        'A' Added
+        'C' Conflicted
+        'D' Deleted
+        'I' Ignored
+        'M' Modified
+        'R' Replaced
+        'X' an unversioned directory created by an externals definition
+        '?' item is not under version control
+        '!' item is missing (removed by non-svn command) or incomplete
+        '~' versioned item obstructed by some item of a different kind
+    Second column: Modifications of a file's or directory's properties
+        ' ' no modifications
+        'C' Conflicted
+        'M' Modified
+    Third column: Whether the working copy is locked for writing by another Subversion client modifying the working copy
+        ' ' not locked for writing
+        'L' locked for writing
+    Fourth column: Scheduled commit will create a copy (addition-with-history)
+        ' ' no history scheduled with commit (item was newly added)
+        '+' history scheduled with commit (item was copied)
+    Fifth column: Whether the item is switched or a file external
+        ' ' normal
+        'S' the item has a Switched URL relative to the parent
+        'X' a versioned file created by an eXternals definition
+    Sixth column: Whether the item is locked in repository for exclusive commit
+        (without -u)
+        ' ' not locked by this working copy
+        'K' locked by this working copy, but lock might be stolen or broken
+        (with -u)
+        ' ' not locked in repository, not locked by this working copy
+        'K' locked in repository, lock owned by this working copy
+        'O' locked in repository, lock owned by another working copy
+        'T' locked in repository, lock owned by this working copy was stolen
+        'B' not locked in repository, lock owned by this working copy is broken
+    Seventh column: Whether the item is the victim of a tree conflict
+        ' ' normal
+        'C' tree-Conflicted
+    If the item is a tree conflict victim, an additional line is printed
+    after the item's status line, explaining the nature of the conflict.
+
+
+
+    语法:
+        svn status [路径]
+        不传参数，则只列出当前目录及子目录下的修改过的文件
+
+
+
+
+
+
+
+
+
+
+
+文件图标:
+    图形界面中:
+        1.圆形绿色背景,白色对号
+            常规图标,客户端和服务器文件一致
+        2.三角黄色背景,黑色叹号
+            冲突图标,客户端文件和服务器文件有冲突
+        3.文件夹黄色背景，红色叉号
+            已删除图标，文件在服务端已经被删除，本地还存在
+        4.文件夹黄色背景，蓝色十字号
+            添加图标,本地新添加的文件，已经添加到上传队列，还没有上传到服务器
+        5.圆形紫色背景，白色问号
+            无版本控制图标,本地新添加的文件，还没有添加到上传队列，还没有上传到服务器
+        6.圆形红色背景，白色感叹号
+            修改图标，客户端修改了文件，还没有上传到服务器
+        7.圆形灰色背景，白色对号
+            只读图标，文件在客户端只读，无法修改
+        8.文件夹黄色背景，锁符号
+            锁定图标，服务端数据已锁定
+        9.文件夹黄色背景，横线禁止符号
+            忽略图标，在客户端的文件被忽略，不会被提交到版本库
+
+

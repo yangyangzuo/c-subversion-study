@@ -1,0 +1,10 @@
+1.服务端创建svn仓库地址
+    svnadmin create 仓库名称
+2. svn checkout 仓库地址
+    例如:
+        svn checkout svn://localhost:3690/仓库名称
+3.在检出的目录中添加/修改文件
+    svn commit -m '提交日志'
+
+
+    

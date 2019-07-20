@@ -34,7 +34,7 @@
             # auth-access = write  
             # password-db = passwd  
             # authz-db = authz 
-            去掉这几个前面的#
+            去掉这几个前面的#和空格
             anon-access 表示匿名访问权限（如果把anon-access=read修改为anon-access=none，
             这样就禁止了匿名访问，只有输入账号密码才可以访问）
         3.创建用户
@@ -44,7 +44,23 @@
         4.配置用户组和权限
             仓库名称/conf/authz
             -->     
+        5.启动svn服务
+            svnserve -d -r 仓库名称所在的文件夹
+            例如:
+                仓库名称所在的目录是/Users/admin/Downloads/svntest,则执行如下命令:
+                svnserve -d -r /Users/admin/Downloads/svntest
 
+                查看帮助:
+                svnserve --help
+                默认svn服务是3690,从命令中可以看出
+
+
+        6.关闭服务
+            1.activity monitor --> seach svn ---> force a process to quit
+            2.ps -e | grep svnserve   -->   kill  pid
+
+        检出项目:
+            svn checkout svn://localhost:3690/仓库名称
 
 
     windows:

@@ -1,0 +1,8 @@
+帮助:
+    svn help checkout 
+
+语法:
+    svn checkout svn地址
+
+例如:
+    svn checkout 

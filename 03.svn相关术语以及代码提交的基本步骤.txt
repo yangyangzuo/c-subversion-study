@@ -1,0 +1,14 @@
+1.初次检出项目
+    svn checkout 仓库地址
+    添加修改文件
+    svn commit -m '提交日志'
+
+2.已有项目
+    svn update
+    添加修改文件
+    svn commit -m '提交日志'
+
+
+    
+
+
