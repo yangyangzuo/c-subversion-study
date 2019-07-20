@@ -1,0 +1,7 @@
+帮助信息:
+    svn help log
+
+查看提交日志:
+    svn log
+
+    

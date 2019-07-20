@@ -2,43 +2,69 @@
     执行svn update命令的时候，如果发生冲突，对应的文件会生成3个文件
     例如: 对于index.php文件
         index.php           自动合并后的文件
-        index.php.mine      自己本地的文件
-        index.php.r6        update之前本地(版本号小)的文件？
-        index.php.r7        update之前服务端(版本号大)的文件?
+        index.php.mine      update合并之前自己本地的文件
+        index.php.r6        update合并之前(r6版本)的文件
+        index.php.r7        update合并之前(r7版本)的文件
 
 
 
 解决冲突:
-    1.
+    1.标记冲突已解决
     手动删除这3个文件
         index.php.mine      自己本地的文件
         index.php.r6        update之前本地(版本号小)的文件？
         index.php.r7        update之前服务端(版本号大)的文件?
     或者
-        svn resoved ???
-
-    2.手动合并冲突
-        冲突文件内容示例:
-            <<<<<<< .mine
-                文件内容1
-            =======
-                文件内容2
-            ?>>>>>>> .r7
+        svn resolved index.php
+        执行上述命令后，svn认为该文件已经解决了冲突，会自动删除上述的3个文件
 
 
-        上半部分:
-            <<<<<<< .mine 和 ====== 之间的内容，是自己的本地文件内容
-        下半部分:
-            ======= 和 ?>>>>>>> .r7 之间的内容，是更新之后的内容
-        
-        根据需要修改，保留最后的文件内容，然后删除如下3行
-         <<<<<<< .mine
-         =======
-         ?>>>>>>>> .r7
 
+
+    2.手动合并冲突的文件
+        使用文本编辑器打开，解决冲突:
+            冲突文件内容示例:
+                <<<<<<< .mine
+                    文件内容1,这里是我自己的代码
+                ||||||| .r4
+                =======
+                    文件内容2,这里是更新后,别人的代码
+                ?>>>>>>> .r7
+
+            说明:
+                上半部分:
+                    <<<<<<< .mine 和 ====== 之间的内容，是自己的本地文件内容
+                下半部分:
+                    ======= 和 ?>>>>>>> .r7 之间的内容，是更新之后的内容
+                
+                根据需要修改，保留最后的文件内容，然后删除如下3行
+                <<<<<<< .mine
+                =======
+                ?>>>>>>>> .r7
+
+
+        或者
+
+        在命令行解决冲突:
+            svn resolve index.php
+            这个命令，表示进行解决冲突的操作，命令行会提示你使用哪种方式，进行合并
+            Merge conflict discovered in file 'test.html'.
+            Select: (p) Postpone, (df) Show diff, (e) Edit file, (m) Merge,
+                    (s) Show all options: 
+
+            p:  Postpone: [poʊˈspoʊn]  延迟;延期;展缓
+            df: 显示冲突内容
+            e: 需要配置编辑器，如果配置了编辑器，就类似通过文本编辑器打开，然后解决冲突
+            m: 合并,根据弹出的选项，进行合并操作
 
 
     3.提交代码
+            解决冲突以后，可以发现
+            >svn status
+            M     test.html
+            直接提交即可
+            > svn commit -m 'merge conflict'
+            
 
 
 

@@ -31,9 +31,9 @@
             仓库名称/conf/svnserver.conf   -->
             # anon-access = read  
             # auth-access = write  
-            #开启认证文件
+            #开启认证文件,指定使用哪个文件验证用户名和密码
             # password-db = passwd  
-            #开启授权文件
+            #开启授权文件,指定使用哪个文件验证权限
             # authz-db = authz 
             去掉这几个前面的#和空格
 

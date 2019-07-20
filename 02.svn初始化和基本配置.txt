@@ -1,10 +1,83 @@
+svn仓库:
+    顶层仓库(根仓库所在的文件夹,一个普通的文件夹)
+    根仓库(svnadmin create命令创建的文件夹)
+
+svnadmin create 根仓库名称
+    一台服务器，服务着一个文件夹(顶层仓库,一个普通的文件夹)
+    这个文件夹下面放着各个项目仓库(通过svnadmin create命令创建的版本库文件夹，这个文件夹里面包含着conf,db,format等svn相关的配置目录和文件)
+    因此，通过svn checkout等命令所操作的都是项目仓库文件夹
+
+
+
+svn服务的启动:
+    svnserve命令说明:
+        简单帮助:
+            svnserve -h
+        详细帮助:
+            man svnserve
+
+        -d, --daemon
+                Causes svnserve to run  in  daemon  mode.   svnserve  backgrounds  itself  and
+                accepts and serves TCP/IP connections on the svn port (3690, by default).
+        -r root, --root=root
+                Sets  the  virtual  root for repositories served by svnserve.  The pathname in
+                URLs provided by the client will be interpreted relative  to  this  root,  and
+                will not be allowed to escape this root.
+
+    例如:
+            仓库名称所在的目录是/Users/admin/Downloads/svntest
+            仓库名称:exam
+            切换到/Users/admin/Downloads/svntest
+            执行: svnadmin create exam
+
+    方式1:
+        任意目录执行 svnserve -d
+        此时服务已经启动，在检出项目的时候，需要添加仓库的完整路径(顶层仓库+根仓库)即:svn仓库代码所在的完整路径
+        svn checkout svn://localhost/顶层仓库路径(svn仓库所在的普通文件夹)/根仓库(svn仓库路径,包含svn的相关配置文件的目录)
+        svn checkout svn://localhost/Users/admin/Downloads/svntest/exam
+
+        缺点:暴露了系统的文件夹目录/Users/admin/Downloads/svntest/
+
+    方式2:
+        通过-r选项，指定顶层仓库(svn仓库所在的普通文件夹)
+        任意目录执行 svnserve -d -r 仓库名称所在的文件夹
+        svnserve -d -r /Users/admin/Downloads/svntest
+        此时服务已经启动，在检出项目的时候，只需要添加根仓库(svn仓库路径,包含svn的相关配置文件的目录)
+        svn checkout svn://loclahost/exam
+
+    方式3:
+        通过-r选项，指定顶层仓库/根仓库
+        任意目录执行 svnserve -d -r 顶层仓库/根仓库
+        svnserve -d -r /Users/admin/Downloads/svntest/exam
+        此时服务已经启动，在检出项目的时候,不需要再添加仓库路径
+        svn checkout svn://loclahost
+        当前的svn://loclahost,路径对应着/Users/admin/Downloads/svntest/exam
+        直接检出的就是exam仓库
+
+        缺点: 当前的服务器，只服务于当前的仓库，再添加新仓库，无法操作
+
+    注意:
+        端口默认是3690,如果没有修改,可以省略不写
+        
+        svn checkout 命令后面跟随的路径，一定是svn仓库目录(包含svn的相关配置文件的目录)
+        方式1中: svn checkout svn://localhost/Users/admin/Downloads/svntest/exam
+            svn://localhost/Users/admin/Downloads/svntest/exam明确指明了svn仓库的完整路径
+        方式2中:  svn checkout svn://loclahost/exam
+            svn://loclahost/exam,启动的服务的时候，已经明确指明了顶层仓库(svn仓库所在的普通文件夹),所以这里只需要指定根仓库目录(包含svn的相关配置文件的目录)
+        方式3中: svn checkout svn://loclahost
+            svn://loclahost,启动的服务的时候，已经明确指明了顶层仓库(svn仓库所在的普通文件夹)和根仓库目录(包含svn的相关配置文件的目录),所以这里不需要指定仓库名称
+
+
 1.服务端创建svn仓库地址
     svnadmin create 仓库名称
-2. svn checkout 仓库地址
+2.svnserve -d -r 顶层仓库
+
+3.svn checkout svn://localhost/仓库名称
     例如:
-        svn checkout svn://localhost:3690/仓库名称
+        svn checkout svn://localhost/仓库名称
 3.在检出的目录中添加/修改文件
     svn commit -m '提交日志'
+
 
 
     
