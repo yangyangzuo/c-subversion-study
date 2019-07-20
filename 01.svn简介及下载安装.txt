@@ -28,22 +28,25 @@
         1.创建版本管理仓库
             svnadmin create 仓库名称
         2.设置权限
-            仓库名称/conf/svnserver.conf
-            -->
+            仓库名称/conf/svnserver.conf   -->
             # anon-access = read  
             # auth-access = write  
+            #开启认证文件
             # password-db = passwd  
+            #开启授权文件
             # authz-db = authz 
             去掉这几个前面的#和空格
+
             anon-access 表示匿名访问权限（如果把anon-access=read修改为anon-access=none，
             这样就禁止了匿名访问，只有输入账号密码才可以访问）
-        3.创建用户
+        3.创建用户(认证文件)
             仓库名称/conf/passwd
             --> 添加用户名和密码
             在[users]后面加ytt=123，表示创建了ytt帐户，密码是123.
-        4.配置用户组和权限
+        4.配置用户组和权限(授权文件)
             仓库名称/conf/authz
             -->     
+
         5.启动svn服务
             svnserve -d -r 仓库名称所在的文件夹
             例如:
@@ -61,6 +64,29 @@
 
         检出项目:
             svn checkout svn://localhost:3690/仓库名称
+            端口默认是3690,因此可以省略3690
+            svn checkout svn://localhost/仓库名称
+
+
+
+        注意:
+            如果使用如下命令:
+                1.svnadmin create 仓库名称
+                仓库名称所在的目录是/Users/admin/Downloads/svntest,则执行如下命令:
+                2.svnserve -d -r /Users/admin/Downloads/svntest/仓库名称
+                这里直接把某一个仓库名称作为服务的根目录，则
+                检出的时候，就不需要添加仓库名称了，即:
+                    检出项目:
+                    3.svn checkout svn://localhost:3690
+                    或者
+                    svn checkout svn://localhost
+                svn checkout的地址，一定是svnadmin create创建的目录，这个目录里面包含着conf,db,format等svn相关的配置目录和文件
+                所以才可以通过checkout命令检出
+
+
+        查看帮助:
+        svnserve --help
+        默认svn服务是3690,从命令中可以看出
 
 
     windows:

@@ -2,3 +2,8 @@
     mac:
         删除: /Users/用户名/.subversion
         再次提交,提示输入用户名和密码
+
+        或者
+
+        svn checkout 仓库地址  --username 用户名
+        
