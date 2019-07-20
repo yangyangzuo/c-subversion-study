@@ -1,3 +1,5 @@
+项目初次从服务器下载到本地:
+
 帮助:
     svn help checkout 
 
@@ -5,4 +7,21 @@
     svn checkout svn地址
 
 例如:
-    svn checkout 
+    1.
+    svn checkout svn://loclahost:3690/exam
+    svn checkout svn://loclahost/exam
+    端口3690如果没有修改，则可以省略端口号
+
+    2.svn地址，必须对应着svn仓库路径(包含svn的相关配置文件的目录)
+
+    3.svn checkout svn://loclahost/exam 指定本地的用来存放拉去文件的目录
+
+        如果省略后面的目录，则会在当前命令所在的目录下，生成一个exam文件夹，exam文件夹里面就是对应的仓库代码文件
+        如果不省略，例如:
+            相对路径
+            svn checkout svn://loclahost/exam hello
+                则会在当前命令所在的目录下，生成一个hello文件夹，hello文件夹里面就是对应的仓库代码文件
+
+            绝对路径
+            svn checkout svn://loclahost/exam /user/hello
+                则会在/user/hello文件夹下存放对应的仓库代码文件
