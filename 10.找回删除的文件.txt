@@ -1,0 +1,38 @@
+svn revert 文件名/目录名
+
+
+1.本地新建的文件，没有添加到svn控制中
+
+    >touch test.js
+    >svn status
+    ?       test.js
+    未添加到版本库中的文件，不能使用svn del删除命令删除
+    >rm test.js
+    >svn status
+    没有任何的影响，此时删除的文件，只能通过数据恢复找回
+
+
+2.文件通过add命令告诉需要添加到版本控制之中,但是从来没有提交过(此时版本库中并没有保存该文件)
+    >touch test.js
+    >svn add *
+    >svn status
+    A       test.js
+    >rm test.js
+    >svn status
+    !       test.js
+    >svn revert test.js
+    该文件无法恢复，文件并没有记录到版本库中
+
+3.只有被版本库保存过的文件(而且该文件是在本地操作删除(rm/svn remove都可以)的，没有提交到服务器)才可以通过revert命令恢复
+
+    >svn update
+    >ls -la
+    -rw-r--r--  1 admin  staff    0 Jul 21 10:13 a.js
+    >rm a.js
+    >svn status
+    !       a.js
+    >svn revert a.js
+    Reverted 'a.js'
+
+
+4.如果文件被删除，而且被提交到服务器，则文件只能通过版本回退找回

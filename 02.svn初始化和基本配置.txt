@@ -79,5 +79,12 @@ svn服务的启动:
     svn commit -m '提交日志'
 
 
+查看svn配置相关信息
+    svn info
 
+查看具体的某个文件
+    svn info 本地文件名
+    svn info svn://locahost/仓库名/对应的文件路径
     
+查看服务器上文件列表:
+    svn list svn://localhost/仓库名字

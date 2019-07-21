@@ -1,10 +1,10 @@
 冲突文件:
     执行svn update命令的时候，如果发生冲突，对应的文件会生成3个文件
     例如: 对于index.php文件
-        index.php           自动合并后的文件
+        index.php           update后服务器上最新的版本(r7)和本地文件自动合并后的文件
         index.php.mine      update合并之前自己本地的文件
-        index.php.r6        update合并之前(r6版本)的文件
-        index.php.r7        update合并之前(r7版本)的文件
+        index.php.r6        从服务器上下载的最新版本的上一个版本(r6)的文件
+        index.php.r7        从服务器上下载的最新版本(r7)的文件
 
 
 
@@ -56,6 +56,12 @@
             df: 显示冲突内容
             e: 需要配置编辑器，如果配置了编辑器，就类似通过文本编辑器打开，然后解决冲突
             m: 合并,根据弹出的选项，进行合并操作
+
+            这里如果要进行编辑文件(e)，则需要设置使用的编辑器,否则
+            None of the environment variables SVN_EDITOR, VISUAL or EDITOR are set, 
+            and no 'editor-cmd' run-time configuration option was found
+
+            export SVN_EDITOR=/usr/bin/vim
 
 
     3.提交代码
