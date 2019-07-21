@@ -1,0 +1,24 @@
+文件的删除:
+    svn remove 文件名/文件夹
+    svn rm 文件名/文件夹
+    svn delete 文件名/文件夹
+    svn del 文件名/文件夹
+
+
+删除文件:
+    svn remove 文件名
+    例如:
+        >svn remove a.txt
+        >svn status
+        D       a.txt
+        >svn commit -m 'revmoe a.txt'
+
+
+
+    手动删除/非svn删除命令
+        >rm a.js
+        >svn status
+        !       a.js
+        此时提交不包含删除信息，需要通过svn remove命令告诉svn移除版本控制
+        >svn remove a.js
+        >svn commit -m 'remove a.js'

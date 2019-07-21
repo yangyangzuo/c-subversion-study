@@ -1,15 +1,30 @@
 1.初次检出项目
     svn checkout 仓库地址
-    添加/修改文件
+    添加文件/目录名
     svn add 文件名/目录名
     svn commit -m '提交日志'
+
+
+    svn checkout 仓库地址
+    //修改文件/目录名
+    //修改文件，不用执行svn add 命令，可以直接提交
+    //这点和git不同，git对于任何添加/修改/修改的文件都需要使用git add命令添加到暂存区
+    //svn除了新添加的文件需要执行add命令，对于已经存在版本库中的文件操作，不需要使用add命令
+    svn commit -m '提交日志'
+
+
 
 2.已有项目
     svn update
-    添加/修改文件
+    添加文件/目录名
     svn add 文件名/目录名
     svn commit -m '提交日志'
 
+    svn update
+    //修改文件/目录名
+    //修改文件，不用执行svn add 命令，可以直接提交
+    //这点和git不同，git对于任何添加/修改的文件都需要使用git add命令添加到暂存区
+    svn commit -m '提交日志'
 
     
 把文件/目录添加到svn管理中:
@@ -28,12 +43,15 @@
         svn add 文件2
         svn add ....
 
+        
+        add *可以在git和svn中同时使用
+        在svn中，对于已经添加到版本库中的文件会提示警告信息，对于没有添加到版本库中的文件会添加到svn管理之中
 
 帮助:
     svn help add
     svn -h add
 
     svn add * 
-    
+
 
 

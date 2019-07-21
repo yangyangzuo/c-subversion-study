@@ -1,0 +1,7 @@
+svn help commit 
+svn -h commit
+
+提交某个文件
+    svn commit 某个文件 -m '提交信息'
+提交所有被管理的文件
+    svn commit -m '提交信息'
