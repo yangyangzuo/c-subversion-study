@@ -33,4 +33,7 @@
     svn help add
     svn -h add
 
+    svn add * 
+    
+
 
