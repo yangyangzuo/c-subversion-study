@@ -58,9 +58,14 @@
         1.切换到指定目录，当前目录及其目录下的所有文件/目录都会被添加到版本管理器
             svn add *
             或者
+            svn add * --force
+            或者
             svn add . --force
         2.在其他目录
             svn add 对应目录名/* 
+            或者
+            svn add 对应目录名/* --force
+            或者
             svn add 对应目录名/. --force
         
 
