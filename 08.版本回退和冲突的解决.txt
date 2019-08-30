@@ -3,7 +3,7 @@
     例如: 对于index.php文件
         index.php           update后服务器上最新的版本(r7)和本地文件自动合并后的文件
         index.php.mine      update合并之前自己本地的文件
-        index.php.r6        从服务器上下载的最新版本的上一个版本(r6)的文件
+        index.php.r6        从服务器上下载的最新版本(r7)的上一个版本(r6)的文件
         index.php.r7        从服务器上下载的最新版本(r7)的文件
 
 
@@ -73,6 +73,9 @@
             
 
 
+
+版本的回退:
+    
 
 
 
