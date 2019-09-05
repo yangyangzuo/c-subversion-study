@@ -24,7 +24,7 @@ svn revert 文件名/目录名
     该文件无法恢复，文件并没有记录到版本库中
 
 3.只有被版本库保存过的文件(而且该文件是在本地操作删除(rm/svn remove都可以)的，没有提交到服务器)才可以通过revert命令恢复
-
+    (参考14.撤销本地文件更改.txt)
     >svn update
     >ls -la
     -rw-r--r--  1 admin  staff    0 Jul 21 10:13 a.js
