@@ -1,5 +1,54 @@
-帮助信息:
-    svn help log
+documents:
+    
+
+
+description:
+    查看日志
+    该命令显示当前版本的日志信息，如果是刚提交到服务器，则日志信息不显示，需要先进行update，本次提交的日志才会显示
+
+example:
+    列出最新提交的3条记录
+    svn log -l 3
+    ------------------------------------------------------------------------
+    r17915 | tiezheng | 2019-08-30 12:37:36 +0800 (Fri, 30 Aug 2019) | 1 line
+
+    update test
+    ------------------------------------------------------------------------
+    r17914 | tiezheng | 2019-08-30 12:23:48 +0800 (Fri, 30 Aug 2019) | 1 line
+
+    update config file of development environment
+    ------------------------------------------------------------------------
+    r17908 | zhangzengguang | 2019-08-30 11:24:27 +0800 (Fri, 30 Aug 2019) | 1 line
+
+    开发环境配置更新
+    ------------------------------------------------------------------------
+
+
+
+    列出最新提交的2条记录,并且打印出受影响的文件的详细路径
+    svn log -l 2 -v
+    ------------------------------------------------------------------------
+    r17915 | tiezheng | 2019-08-30 12:37:36 +0800 (Fri, 30 Aug 2019) | 1 line
+    Changed paths:
+    M /MicroService/WebH5/niceloo_support/NICELOO_ACTIVITIES/index.html
+
+    update test
+    ------------------------------------------------------------------------
+    r17914 | tiezheng | 2019-08-30 12:23:48 +0800 (Fri, 30 Aug 2019) | 1 line
+    Changed paths:
+    M /MicroService/WebH5/niceloo_support/NICELOO_ACTIVITIES/doc/开发环境配置.txt
+    M /MicroService/WebH5/niceloo_support/NICELOO_ACTIVITIES/index.html
+    M /MicroService/WebH5/niceloo_support/NICELOO_ACTIVITIES/src/api/index.js
+    M /MicroService/WebH5/niceloo_support/NICELOO_ACTIVITIES/src/pages/demo/getIdentification.vue
+    A /MicroService/WebH5/niceloo_support/NICELOO_ACTIVITIES/src/pages/demo/openClique.vue
+    M /MicroService/WebH5/niceloo_support/NICELOO_ACTIVITIES/src/router/demo.js
+
+    update config file of development environment
+    ------------------------------------------------------------------------
+
+
+help:
+    svn help cp
 
         log: Show the log messages for a set of revision(s) and/or path(s).
         usage: 1. log [PATH][@REV]
@@ -158,52 +207,3 @@
                                         FILE:SECTION:OPTION=[VALUE]
                                     For example:
                                         servers:global:http-library=serf
-
-
-
-查看提交日志:
-    svn log
-    该命令显示当前版本的日志信息，如果是刚提交到服务器，则日志信息不显示，需要先进行update，本次提交的日志才会显示
-    
-    
-
-
-    例子:
-        列出最新提交的3条记录
-        svn log -l 3
-        ------------------------------------------------------------------------
-        r17915 | tiezheng | 2019-08-30 12:37:36 +0800 (Fri, 30 Aug 2019) | 1 line
-
-        update test
-        ------------------------------------------------------------------------
-        r17914 | tiezheng | 2019-08-30 12:23:48 +0800 (Fri, 30 Aug 2019) | 1 line
-
-        update config file of development environment
-        ------------------------------------------------------------------------
-        r17908 | zhangzengguang | 2019-08-30 11:24:27 +0800 (Fri, 30 Aug 2019) | 1 line
-
-        开发环境配置更新
-        ------------------------------------------------------------------------
-
-
-
-        列出最新提交的2条记录,并且打印出受影响的文件的详细路径
-        svn log -l 2 -v
-        ------------------------------------------------------------------------
-        r17915 | tiezheng | 2019-08-30 12:37:36 +0800 (Fri, 30 Aug 2019) | 1 line
-        Changed paths:
-        M /MicroService/WebH5/niceloo_support/NICELOO_ACTIVITIES/index.html
-
-        update test
-        ------------------------------------------------------------------------
-        r17914 | tiezheng | 2019-08-30 12:23:48 +0800 (Fri, 30 Aug 2019) | 1 line
-        Changed paths:
-        M /MicroService/WebH5/niceloo_support/NICELOO_ACTIVITIES/doc/开发环境配置.txt
-        M /MicroService/WebH5/niceloo_support/NICELOO_ACTIVITIES/index.html
-        M /MicroService/WebH5/niceloo_support/NICELOO_ACTIVITIES/src/api/index.js
-        M /MicroService/WebH5/niceloo_support/NICELOO_ACTIVITIES/src/pages/demo/getIdentification.vue
-        A /MicroService/WebH5/niceloo_support/NICELOO_ACTIVITIES/src/pages/demo/openClique.vue
-        M /MicroService/WebH5/niceloo_support/NICELOO_ACTIVITIES/src/router/demo.js
-
-        update config file of development environment
-        ------------------------------------------------------------------------

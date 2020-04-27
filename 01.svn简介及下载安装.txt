@@ -6,6 +6,7 @@
     http://svnbook.red-bean.com/
     http://svnbook.red-bean.com/en/1.7/index.html
     http://svnbook.red-bean.com/nightly/zh/index.html
+    http://www.svn.org.cn/
 
 
 客户端/服务端软件下载地址:
