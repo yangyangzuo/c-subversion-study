@@ -6,7 +6,7 @@ description:
       分支合并
 
 example:
-    svn cp https://192.168.10.80:8443/svn/WebProject/MicroService/WebH5/niceloo_official/NICELOO_PC_3.0/trunk https://192.168.10.80:8443/svn/WebProject/MicroService/WebH5/niceloo_official/NICELOO_PC_3.0/branches/learningCenter3.0_0427 -m '3.0学习中心修改'
+    svn cp https://192.168.10.80:8443/svn/WebProject/MicroService/WebH5/niceloo_official/NICELOO_PC_3.0/trunk https://192.168.10.80:8443/svn/WebProject/MicroService/WebH5/niceloo_official/NICELOO_PC_3.0/branches/studyCardReform_0506 -m '网站首页,学习卡开课,学员端使用,接口改造,匹配新的管理端学习卡管理'
     svn httpurl/fileurl httpurl/fileurl -m 'description'
     
 
