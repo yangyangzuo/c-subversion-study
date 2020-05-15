@@ -6,9 +6,16 @@ description:
       分支合并
 
 example:
+    先更新svn服务器,本地再拉取文件
     svn cp https://192.168.10.80:8443/svn/WebProject/MicroService/WebH5/niceloo_official/NICELOO_PC_3.0/trunk https://192.168.10.80:8443/svn/WebProject/MicroService/WebH5/niceloo_official/NICELOO_PC_3.0/branches/newOrderCenterToCRM -m '新订单中心直接对接crm'
     svn httpurl/fileurl httpurl/fileurl -m 'description'
+    svn update
+
+
+    本地文件合并后,再提交到svn服务器
     
+    svn cp trunk test1 -m '创建测试分支'
+    svn commit -m '---'
 
 help:
     svn help cp
