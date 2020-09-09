@@ -40,10 +40,15 @@ svn服务的启动:
 
     方式2:
         通过-r选项，指定顶层仓库(svn仓库所在的普通文件夹)
-        任意目录执行 svnserve -d -r 仓库名称所在的文件夹
-        svnserve -d -r /Users/admin/Downloads/svntest
-        此时服务已经启动，在检出项目的时候，只需要添加根仓库(svn仓库路径,包含svn的相关配置文件的目录)
-        svn checkout svn://loclahost/exam
+        svnserve -d -r 任意文件夹
+        这个任意文件夹是个相对目录---对应svn://loclahost
+        例如:a/b/webproject
+        webproject是通过svnadmin create创建的仓库
+        如果:svnserve -d -r a
+        则: svn checkout svn://loclahost/b/webproject
+        才可以检出(仓库webproject)
+
+
 
     方式3:
         通过-r选项，指定顶层仓库/根仓库
@@ -55,6 +60,7 @@ svn服务的启动:
         直接检出的就是exam仓库
 
         缺点: 当前的服务器，只服务于当前的仓库，再添加新仓库，无法操作
+        但是可以创建文件夹用于区分项目,所有的文件夹(项目)/文件都属于改项目
 
     注意:
         端口默认是3690,如果没有修改,可以省略不写

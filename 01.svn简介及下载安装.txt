@@ -9,7 +9,8 @@
     http://www.svn.org.cn/
 
 
-客户端/服务端软件下载地址:
+
+客户端/服务端下载和安装:
     http://subversion.apache.org       --->    binary packages --->
     http://subversion.apache.org/packages.html
 
@@ -20,14 +21,26 @@
 
 
 
-服务端搭建:
-    mac:
+服务端配置:
+    mac/linux:
         参考:
             https://jingyan.baidu.com/article/6525d4b19dbeb5ac7c2e9450.html
             https://www.cnblogs.com/yintingting/p/7287332.html
 
         1.创建版本管理仓库
             svnadmin create 仓库名称
+
+            例如:
+            svnadmin create /Users/admin/Downloads/svntest
+            仓库(svntest)里面的文件结构:
+                drwxr-xr-x 2 aa aa 4096 Sep  9 23:04 conf/
+                drwxr-sr-x 6 aa aa 4096 Sep  9 23:12 db/
+                -r--r--r-- 1 aa aa    2 Sep  9 22:37 format
+                drwxr-xr-x 2 aa aa 4096 Sep  9 22:37 hooks/
+                drwxr-xr-x 2 aa aa 4096 Sep  9 22:37 locks/
+                -rw-r--r-- 1 aa aa  246 Sep  9 22:37 README.txt
+            以后提交的所有文件都会以二进制形式存储在这个目录下
+
         2.设置权限
             仓库名称/conf/svnserver.conf   -->
             # anon-access = read  
@@ -49,50 +62,43 @@
             -->     
 
         5.启动svn服务
-            svnserve -d -r 仓库名称所在的文件夹
+            svnserve -d -r 仓库名称
             例如:
-                仓库名称所在的目录是/Users/admin/Downloads/svntest,则执行如下命令:
+                仓库名称的目录是/Users/admin/Downloads/svntest,则执行如下命令:
                 svnserve -d -r /Users/admin/Downloads/svntest
-
-                查看帮助:
-                svnserve --help
-                默认svn服务是3690,从命令中可以看出
 
 
         6.关闭服务
             1.activity monitor --> seach svn ---> force a process to quit
             2.ps -e | grep svnserve   -->   kill  pid
 
-        检出项目:
+        
+
+
+        7.检出项目:
             svn checkout svn://localhost:3690/仓库名称
             端口默认是3690,因此可以省略3690
             svn checkout svn://localhost/仓库名称
 
+            例如:
+            检出项目
+            svn checkout svn://localhost
+            创建文件和目录
+            mkdir web/trunk
+            mkdir web/tags
+            mkdir web/branch
+            提交
+            svn add web
+            svn commit -m 'add web project'
 
+        8.上述提交后
+            其他人检出项目,就可以看到web项目
+            svn checkout svn://localhost
 
-        注意:
-            如果使用如下命令:
-                1.svnadmin create 仓库名称
-                仓库名称所在的目录是/Users/admin/Downloads/svntest,则执行如下命令:
-                2.svnserve -d -r /Users/admin/Downloads/svntest/仓库名称
-                这里直接把某一个仓库名称作为服务的根目录，则
-                检出的时候，就不需要添加仓库名称了，即:
-                    检出项目:
-                    3.svn checkout svn://localhost:3690
-                    或者
-                    svn checkout svn://localhost
-                svn checkout的地址，一定是svnadmin create创建的目录，这个目录里面包含着conf,db,format等svn相关的配置目录和文件
-                所以才可以通过checkout命令检出
+            也可以检出一个特定的文件夹
+            svn checkout svn://localhost/文件夹名字
 
 
         查看帮助:
         svnserve --help
         默认svn服务是3690,从命令中可以看出
-
-
-    windows:
-        参考:
-            https://jingyan.baidu.com/article/17bd8e526d344185ab2bb821.html
-
-
-
