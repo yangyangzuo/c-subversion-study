@@ -102,3 +102,42 @@
         查看帮助:
         svnserve --help
         默认svn服务是3690,从命令中可以看出
+
+
+
+
+
+
+
+svnadmin creategeneral usage: svnadmin SUBCOMMAND REPOS_PATH  [ARGS & OPTIONS ...]
+Subversion repository administration tool.
+Type 'svnadmin help <subcommand>' for help on a specific subcommand.
+Type 'svnadmin --version' to see the program version and FS modules.
+
+Available subcommands:
+   crashtest
+   create
+   delrevprop
+   deltify
+   dump
+   freeze
+   help (?, h)
+   hotcopy
+   info
+   list-dblogs
+   list-unused-dblogs
+   load
+   lock
+   lslocks
+   lstxns
+   pack
+   recover
+   rmlocks
+   rmtxns
+   setlog
+   setrevprop
+   setuuid
+   unlock
+   upgrade
+   verify
+

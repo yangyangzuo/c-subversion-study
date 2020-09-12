@@ -1,6 +1,8 @@
 查看命令帮助:
 svn help:
 >svn help
+
+
 usage: svn <subcommand> [options] [args]
 Subversion command-line client.
 Type 'svn help <subcommand>' for help on a specific subcommand.
@@ -66,6 +68,9 @@ For additional information, see http://subversion.apache.org/
 
 
 
+语法:
+svn <subcommand> [options] [args]
+svn 子命令 选项 参数
 
 
 1.检出项目
